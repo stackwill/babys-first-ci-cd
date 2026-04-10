@@ -4,3 +4,16 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    restart: unless-stopped
+    command:
+      - --label-enable
+      - --interval
+      - "30"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/will/.docker/config.json:/config.json:ro
