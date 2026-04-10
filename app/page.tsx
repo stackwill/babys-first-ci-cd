@@ -68,27 +68,36 @@ export default function HomePage() {
 
   return (
     <main className="page-shell">
-      <section className="hero">
-        <p className="eyebrow">Web utility</p>
-        <h1>Base64 Utility</h1>
+      <header className="masthead">
+        <p className="eyebrow">Internal Utility Index</p>
+        <h1>Base64 Encode / Decode</h1>
         <p className="lede">
-          Encode plain text, decode Base64, and keep a visible record of the
-          currently deployed build.
+          Plain text in, Base64 out. Base64 in, plain text out. Built as a
+          small operational utility with visible deployment metadata.
         </p>
-        <dl className="build-strip">
-          <div>
-            <dt>Commit</dt>
-            <dd>{build.sha}</dd>
-          </div>
-          <div>
-            <dt>Built</dt>
-            <dd>{build.builtAt}</dd>
-          </div>
-        </dl>
+      </header>
+
+      <section className="status-table" aria-label="Deployment metadata">
+        <div className="status-row">
+          <span className="status-label">Commit</span>
+          <span className="status-value">{build.sha}</span>
+        </div>
+        <div className="status-row">
+          <span className="status-label">Built</span>
+          <span className="status-value">{build.builtAt}</span>
+        </div>
+        <div className="status-row">
+          <span className="status-label">State</span>
+          <span className="status-value">{status}</span>
+        </div>
       </section>
 
       <section className="workspace">
         <section className="panel">
+          <h2>Source Text</h2>
+          <p className="panel-note">
+            Enter plain text to encode or Base64 text to decode.
+          </p>
           <label htmlFor="input">Input</label>
           <textarea
             id="input"
@@ -114,10 +123,11 @@ export default function HomePage() {
         </section>
 
         <section className="panel">
-          <div className="output-header">
-            <h2>Output</h2>
-            <p>{status}</p>
-          </div>
+          <h2>Result</h2>
+          <p className="panel-note">
+            Output updates after a successful request to the selected action.
+          </p>
+          <label htmlFor="output">Output</label>
           <pre className="output-box">{output}</pre>
         </section>
       </section>
