@@ -9,6 +9,10 @@ bun install
 bun run dev
 ```
 
+## Production bootstrap
+
+To configure a fresh Docker host to track a published GHCR image with Watchtower, use the local bootstrap command described in [docs/production-bootstrap.md](/home/will/code/infra/docs/production-bootstrap.md).
+
 ## GitHub Actions
 
 The workflow only builds and publishes the container image to GHCR. It does not SSH into your server.
